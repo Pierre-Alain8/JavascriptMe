@@ -1,11 +1,48 @@
 window.onload = function() {
-
     // --------------------- STEP 1 ---------------------
         // Par defaut le formulaire de connection est afficher, le formulaire d'inscription quand a lui est en 'display: none';
         // FAITE EN SORTE QUE AU CLICK SUR LES BUTTONS POSSEDANT LA CLASS 'square-button-empty'
             // DE MASQUER LE LOGIN FORM POUR AFFICHER LE REGISTER FORM, ET INVERSEMENT <->
 
+     let buttons = document.querySelectorAll(".square-button-empty")
+     
+         for (let i = 0; i  < buttons.length; i++) {
+             buttons[i].onclick = function(e) {
+        
+        
+         if (e.target.getAttribute("data-form") == 0) { 
+         document.getElementById("connexion-form").style.display ="none";
+         document.getElementById("register-form").style.display ="flex";
+         }
 
+         else {
+         document.getElementById("register-form").style.display ="none";
+         document.getElementById("connexion-form").style.display ="flex";
+         }
+         
+        }
+        }
+
+
+    //  var switchOn = document.getElementById("resgister-form");
+    //     if (switchOn.style.display === "none"){
+    //         switchOn.style.visibility = "hidden";
+    //     }
+    //     else {
+    //         switchOn.style.display = "none";
+    //     }
+    //  if (switchOn == "Don't have an account ?") {
+    //     var switchOn = document.getElementById("register-form").style.display = "block";
+    //  }
+
+    //  else {
+     
+    //  var switchOf = document.getElementById("connexion-form").style.display = "none";
+    // }
+   
+    //  document.getElementById("register-form").style.visibility = "hidden";
+    //  document.getElementById("connexion-form").style.display = "none";
+   
 
 
 
@@ -56,4 +93,4 @@ window.onload = function() {
             // 2. Si les données saisies correspondent a celles présentes dans le 'localStorage', rediriger l'utilisateur sur la page 'home.html'
 
 
-}
+        }
