@@ -23,7 +23,7 @@ window.onload = function() {
         }
         }
 
-
+    //  ESSAIE DE L'ETAPE 1
     //  var switchOn = document.getElementById("resgister-form");
     //     if (switchOn.style.display === "none"){
     //         switchOn.style.visibility = "hidden";
@@ -44,19 +44,85 @@ window.onload = function() {
     //  document.getElementById("connexion-form").style.display = "none";
    
 
-
-
-
-
-
     // --------------------- STEP 2 ----------------------
         // maintenant que l'on peut afficher nos 2 formulaires l'intéret serait maintenant qu'ils fonctionnent ! pour cela :
-        // FAITE EN SORTE QUE AU CLICK SUR LES BUTTONS POSSEDANT LA CLASS 'square-button' DE :
+        // FAITE EN SORTE QU'AU CLICK SUR LES BUTTONS POSSEDANT LA CLASS 'square-button' DE :
             //  1. récuperer la valeur de tout les champs de formulaires
             //  2. vérifier que le 'username' fait au moins 5 caracteres alphanumérique
             //  3. vérifier que le password fait au moins 8 caracteres et contient a minima une majuscule/minuscule ainsi qu'un entier (integer)
 
+            
+          var signButton = document.querySelector("#buttonLogin");
+          var loginButton = document.querySelector("#register-form");
+          const inputValue = document.querySelectorAll(".form-control")
 
+           signButton.addEventListener("click",function(e){
+           
+            for (let i = 0; i  < inputValue.length; i++){
+             let x = inputValue[i].value
+             console.log (x);
+           }
+        })
+          
+          loginButton.addEventListener("click", function(e){
+            for (let i = 0; i  < inputValue.length; i++){
+                let y = inputValue[i].value
+                console.log (y);
+                 //1- Récuperer la valeur de tout les champs de formulaires : Etant donné que les formulaires fonctionnent tout les deux d'une manière différentes, j'ai dans un premiers temps isolé les deux formulaires en les inétégrant dans deux variables différentes.
+           // 2- Ensuite j'ai ciblé l'ensemble des input (donc les champs dans notre cas) afin de pouvoir récupéer leurs valeurs par la suite.
+          //  3- Ensuite j'ai crée deux évenement clics addListener afin de récupérer les données liés à leurs formulaires respectives. 
+         //   4- Pour cela, comme le querrySelectorAll(".form-control") crée un "tableau", j'ai procédé au principe du for afin qu'une fois que javascript visite toute la taille du tableau, qu'il récupère leurs données grâce au .value
+
+          }})
+           
+         
+
+         //  var checkUsername = document.getElementById("checkUsername")
+         //    function check (username) {
+         //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
+         //        if (username.match(regex) ) {
+         //            return true
+         //        }
+         //        else {
+         //            return false;
+         //        }
+         //    }
+
+
+
+
+
+            // ESSAIES DE L'ETAPE 2 :
+            // 1. Récuperation des données de l'ensemble des champs de formulaires grâce au ciblage des input
+            // let buttonsInput = document.querySelectorAll(".square-button")
+            // buttonsInput.onclick = function (e) { }
+
+                // const inputValue = document.querySelectorAll(".form-control")
+                // for (let i = 0; i  < inputValue.length; i++){
+                //  let x = inputValue[i].value
+                //  console.log (x);
+
+                //  let buttonsInput = document.querySelectorAll(".square-button")
+                //  buttonsInput.onclick = function (e) { 
+                //      document.getElementById("buttonLogin");
+
+
+                  
+                     
+                //  }
+                //  buttonsInput.onclick = function (e) { 
+                //     document.getElementById("buttonRegister")
+
+                
+                //  }
+
+                // }
+            
+            
+             
+                
+                
+            
 
 
 
