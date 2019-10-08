@@ -69,13 +69,46 @@ window.onload = function() {
                 let y = inputValue[i].value
                 console.log (y);
                  //1- Récuperer la valeur de tout les champs de formulaires : Etant donné que les formulaires fonctionnent tout les deux d'une manière différentes, j'ai dans un premiers temps isolé les deux formulaires en les inétégrant dans deux variables différentes.
-           // 2- Ensuite j'ai ciblé l'ensemble des input (donc les champs dans notre cas) afin de pouvoir récupéer leurs valeurs par la suite.
-          //  3- Ensuite j'ai crée deux évenement clics addListener afin de récupérer les données liés à leurs formulaires respectives. 
-         //   4- Pour cela, comme le querrySelectorAll(".form-control") crée un "tableau", j'ai procédé au principe du for afin qu'une fois que javascript visite toute la taille du tableau, qu'il récupère leurs données grâce au .value
+                 // 2- Ensuite j'ai ciblé l'ensemble des input (donc les champs dans notre cas) afin de pouvoir récupéer leurs valeurs par la suite.
+                 //  3- Ensuite j'ai crée deux évenement clics addListener afin de récupérer les données liés à leurs formulaires respectives. 
+                 //   4- Pour cela, comme le querrySelectorAll(".form-control") crée un "tableau", j'ai procédé au principe du for afin qu'une fois que javascript visite toute la taille du tableau, qu'il récupère leurs données grâce au .value
 
           }})
-           
          
+        // tentative de verification du nombre caractères alphanumériques du Username : 
+          var check = document.getElementById("checkUsername");
+          function check (checkUsername){ 
+              var alphanumeric = inputValue.value; 
+              if (checkUsername = /^[a-zA-Z0-9-_.]{5,}$/) {
+               return true;
+              }
+              else
+              {
+                  alert("Veuillez saisir un username égale ou inférieur à 5");
+              }
+          }
+          console.log(check);
+          
+
+
+         
+         //  inputValue.addEventListener("click",function(e){
+         //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
+         //     for (let i = 0; i < checkUsername.length; i++) {
+         //         console.log(regex);
+                
+         //     };
+         //  })
+           
+         //   inputValue.addEventListener("click",function(e) {
+         //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
+         //        if (username.match(regex) ) {
+         //           return true
+         //         }
+         //         else {
+         //           return false;
+         //          }
+         //   });
 
          //  var checkUsername = document.getElementById("checkUsername")
          //    function check (username) {
