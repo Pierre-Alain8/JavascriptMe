@@ -52,78 +52,69 @@ window.onload = function() {
             //  3. vérifier que le password fait au moins 8 caracteres et contient a minima une majuscule/minuscule ainsi qu'un entier (integer)
 
             
-          var signButton = document.querySelector("#buttonLogin");
-          var loginButton = document.querySelector("#register-form");
-          const inputValue = document.querySelectorAll(".form-control")
 
-           signButton.addEventListener("click",function(e){
+        // Procédure de l'étape 2 :
+        // 1. Pour récupérer la valeur de tout les champs de formulaires, j'ai dans un premier temps assigné une variable au ciblage de l'ensemble des input grâce au querySelectorAll;
+        // J'assigne par la suite 2 variables au ciblages des deux square-buttons auquel j'ai assigné un ID(buttonSign/buttonLogin), cette étape est importante pour me permettre de créer un événement click différents à chaque buttons, car les dzux formulaires fonctionnent différements;
+        //  Ensuite il est important que j'assigne chacune de mes variables aux input, en indiquant à Javascript le positionnement de chacun et en lui précisant de récolter les données grâce au .value; 
+        // 2. Pour verifier que l'username contient bien 5 caractères alphanumérique, je met en place 2 conditions grâces aux if;
+        // 3. En ce qui concerne le password je procède de la même manières, met en assignant des variables à chaques "règles" alphanumérique qu'il doit respecter(minuscule,majuscule et chiffre entier);
+        
+        // var signForm = document.querySelector("#connexion-form");
+        //   var loginForm = document.querySelector("#register-form");
+          var inputValue = document.querySelectorAll(".form-control");
            
-            for (let i = 0; i  < inputValue.length; i++){
-             let x = inputValue[i].value
-             console.log (x);
-           }
-        })
-          
-          loginButton.addEventListener("click", function(e){
-            for (let i = 0; i  < inputValue.length; i++){
-                let y = inputValue[i].value
-                console.log (y);
-                 //1- Récuperer la valeur de tout les champs de formulaires : Etant donné que les formulaires fonctionnent tout les deux d'une manière différentes, j'ai dans un premiers temps isolé les deux formulaires en les inétégrant dans deux variables différentes.
-                 // 2- Ensuite j'ai ciblé l'ensemble des input (donc les champs dans notre cas) afin de pouvoir récupéer leurs valeurs par la suite.
-                 //  3- Ensuite j'ai crée deux évenement clics addListener afin de récupérer les données liés à leurs formulaires respectives. 
-                 //   4- Pour cela, comme le querrySelectorAll(".form-control") crée un "tableau", j'ai procédé au principe du for afin qu'une fois que javascript visite toute la taille du tableau, qu'il récupère leurs données grâce au .value
-
-          }})
+          var signButton = document.getElementById("buttonSign");
+          var loginButton = document.getElementById("buttonLogin");
          
-        // tentative de verification du nombre caractères alphanumériques du Username : 
-          var check = document.getElementById("checkUsername");
-          function check (checkUsername){ 
-              var alphanumeric = inputValue.value; 
-              if (checkUsername = /^[a-zA-Z0-9-_.]{5,}$/) {
-               return true;
-              }
-              else
-              {
-                  alert("Veuillez saisir un username égale ou inférieur à 5");
-              }
-          }
-          console.log(check);
-          
+          signButton.addEventListener("click", function() {
+              var username = inputValue[2].value;
+              console.log(username);
 
+              var email = inputValue[3].value;
+              console.log(email);
 
-         
-         //  inputValue.addEventListener("click",function(e){
-         //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
-         //     for (let i = 0; i < checkUsername.length; i++) {
-         //         console.log(regex);
-                
-         //     };
-         //  })
-           
-         //   inputValue.addEventListener("click",function(e) {
-         //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
-         //        if (username.match(regex) ) {
-         //           return true
-         //         }
-         //         else {
-         //           return false;
-         //          }
-         //   });
+              var password = inputValue[4].value;
+              console.log(password);
 
-         //  var checkUsername = document.getElementById("checkUsername")
-         //    function check (username) {
-         //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
-         //        if (username.match(regex) ) {
-         //            return true
-         //        }
-         //        else {
-         //            return false;
-         //        }
-         //    }
+              var passwordConfirm = inputValue[5].value;
+              console.log(passwordConfirm);
 
+             if (username.length < 5) {
+                 alert("Votre username doit contenir plus de 5 caractères");
+                 return false
+             }
 
+             const alphanumeric = /^[a-z0-9]+$/i;
+             if (alphanumeric.test(username) == false){
+                alert("Votre username doit contenir que des caractères alphanumérique");
+                return false
+             }
+             
+             if (password.length < 8) {
+                alert("Votre password doit contenir plus de 8 caractères");
+                return false
+            }
 
+            const minuscule = /^(?=.*[a-z])/;
+            const majuscule = /^(?=.*[A-Z])/; 
+            const integer = /^[-+]?\d+$/;
 
+            if (minuscule.test(password) == false || majuscule.test(password) == false || integer.test(password) == false ){
+               alert("Votre password doit contenir au moins une minuscule, une majuscule et un nombre entier");
+               return false
+            }
+            
+          })
+
+          loginButton.addEventListener("click", function() {
+            var emailLog = inputValue[0].value;
+            console.log(emailLog);
+
+            var passwordLog = inputValue[1].value;
+            console.log(passwordLog);
+
+          })
 
             // ESSAIES DE L'ETAPE 2 :
             // 1. Récuperation des données de l'ensemble des champs de formulaires grâce au ciblage des input
@@ -150,7 +141,59 @@ window.onload = function() {
                 //  }
 
                 // }
-            
+             // tentative de verification du nombre caractères alphanumériques du Username : 
+
+             //  var formRegister = doncument.querySelectorAll("#connexion-form");
+             //  formRegister.addEventListener("click", function(e){
+             //   for (let i = 0; i < formRegister.length; i++) {
+             //        let x = formRegister[i];
+        
+              
+             //   }
+              
+             //   })
+
+             //   var check = document.getElementById("checkUsername");
+             //   function check (checkUsername){ 
+             //       var alphanumeric = inputValue.value; 
+             //       if (checkUsername = /^[a-zA-Z0-9]{5}$/) {
+             //        return true;
+             //       }
+             //       else
+             //       {
+             //           alert("Veuillez saisir un username égale ou inférieur à 5");
+             //       }
+             //       console.log(check(checkUsername));
+
+             //   }
+           
+             //  inputValue.addEventListener("click",function(e){
+             //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
+             //     for (let i = 0; i < checkUsername.length; i++) {
+             //         console.log(regex);
+                
+             //     };
+             //  })
+           
+             //   inputValue.addEventListener("click",function(e) {
+             //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
+             //        if (username.match(regex) ) {
+             //           return true
+             //         }
+             //         else {
+             //           return false;
+             //            }
+             //   });
+             //  var checkUsername = document.getElementById("checkUsername")
+             //    function check (username) {
+             //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
+             //        if (username.match(regex) ) {
+             //            return true
+             //        }
+             //        else {
+             //            return false;
+             //        }
+             //    }
             
              
                 
