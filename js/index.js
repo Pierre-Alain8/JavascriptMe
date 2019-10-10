@@ -196,11 +196,6 @@ window.onload = function() {
              //    }
             
              
-                
-                
-            
-
-
 
 
     // --------------------- STEP 3 -------------------------
@@ -216,12 +211,30 @@ window.onload = function() {
 
 
             // 2. Modifier ensuite le code ci dessus pour qu'a l'instantation d'un nouvelle 'User' ---
-            // --> on utilise les données saisie du formulaire d'inscription pour setup les propriétés notre nouvelle 'User'
+            // --> on utilise les données saisie du formulaire d'inscription pour setup les propriétés de notre nouvelle 'User'
             // puis on stocke ce nouvelle objet utilisateurs dans le 'localStorage' sous la clé 'user'
+            
+            class User{
 
 
+                constructor(username, email, password){
+                    this.username = username;
+                    this.email = email;
+                    this.password = password;
+                } 
+                getUsername(){return this.username};
+                getEmail(){return this.email};
+                getPassword(){return this.password};
+            } 
+             const user = new User(inputValue[i].username, inputValue[i].email, inputValue[i].password);
+                  console.log('hello' + user.getUsername);
+
+                
+                
+         
 
 
+ 
 
     // --------------------- STEP 4 -------------------------
         // une fois nos saisies utilisateurs stocker dans des variables faite en sorte de :
