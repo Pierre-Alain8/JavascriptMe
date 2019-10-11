@@ -1,4 +1,19 @@
 window.onload = function() {
+
+    class User{
+
+
+        constructor(username, email, password){
+            this.username = username;
+            this.email = email;
+            this.password = password;
+        } 
+        getUsername(){return this.username};
+        getEmail(){return this.email};
+        getPassword(){return this.password};
+
+     
+    } 
     // --------------------- STEP 1 ---------------------
         // Par defaut le formulaire de connection est afficher, le formulaire d'inscription quand a lui est en 'display: none';
         // FAITE EN SORTE QUE AU CLICK SUR LES BUTTONS POSSEDANT LA CLASS 'square-button-empty'
@@ -98,12 +113,18 @@ window.onload = function() {
 
             const minuscule = /^(?=.*[a-z])/;
             const majuscule = /^(?=.*[A-Z])/; 
-            const integer = /^[-+]?\d+$/;
+            const integer =  /^(?=.*[0-9])/;
 
             if (minuscule.test(password) == false || majuscule.test(password) == false || integer.test(password) == false ){
-               alert("Votre password doit contenir au moins une minuscule, une majuscule et un nombre entier");
+               alert("Votre password doit contenir au moins une minuscule, une majuscule et un nombre");
                return false
             }
+
+            const user = new User (username,email, password);
+            localStorage.setItem ('user', JSON.stringify(user));
+            // JSON.stringify contraire du JSON.parse
+
+            
             
           })
 
@@ -114,87 +135,24 @@ window.onload = function() {
             var passwordLog = inputValue[1].value;
             console.log(passwordLog);
 
-          })
+           var user = localStorage.getItem ('user');
+               console.log(user);
 
-            // ESSAIES DE L'ETAPE 2 :
-            // 1. Récuperation des données de l'ensemble des champs de formulaires grâce au ciblage des input
-            // let buttonsInput = document.querySelectorAll(".square-button")
-            // buttonsInput.onclick = function (e) { }
-
-                // const inputValue = document.querySelectorAll(".form-control")
-                // for (let i = 0; i  < inputValue.length; i++){
-                //  let x = inputValue[i].value
-                //  console.log (x);
-
-                //  let buttonsInput = document.querySelectorAll(".square-button")
-                //  buttonsInput.onclick = function (e) { 
-                //      document.getElementById("buttonLogin");
-
-
-                  
-                     
-                //  }
-                //  buttonsInput.onclick = function (e) { 
-                //     document.getElementById("buttonRegister")
-
-                
-                //  }
-
-                // }
-             // tentative de verification du nombre caractères alphanumériques du Username : 
-
-             //  var formRegister = doncument.querySelectorAll("#connexion-form");
-             //  formRegister.addEventListener("click", function(e){
-             //   for (let i = 0; i < formRegister.length; i++) {
-             //        let x = formRegister[i];
-        
-              
-             //   }
-              
-             //   })
-
-             //   var check = document.getElementById("checkUsername");
-             //   function check (checkUsername){ 
-             //       var alphanumeric = inputValue.value; 
-             //       if (checkUsername = /^[a-zA-Z0-9]{5}$/) {
-             //        return true;
-             //       }
-             //       else
-             //       {
-             //           alert("Veuillez saisir un username égale ou inférieur à 5");
-             //       }
-             //       console.log(check(checkUsername));
-
-             //   }
-           
-             //  inputValue.addEventListener("click",function(e){
-             //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
-             //     for (let i = 0; i < checkUsername.length; i++) {
-             //         console.log(regex);
-                
-             //     };
-             //  })
-           
-             //   inputValue.addEventListener("click",function(e) {
-             //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
-             //        if (username.match(regex) ) {
-             //           return true
-             //         }
-             //         else {
-             //           return false;
-             //            }
-             //   });
-             //  var checkUsername = document.getElementById("checkUsername")
-             //    function check (username) {
-             //     var regex = /^[a-zA-Z0-9-_.]{5,}$/
-             //        if (username.match(regex) ) {
-             //            return true
-             //        }
-             //        else {
-             //            return false;
-             //        }
-             //    }
+            if (user != null); {
+                user = JSON.parse(user); 
             
+                if (user.email === emailLog && user.password === passwordLog) {
+
+                    document.location.href="home.html";   
+                } else { alert('Account do not exist, please register.') }
+            }
+                
+
+           
+
+          })
+            
+    
              
 
 
@@ -214,20 +172,8 @@ window.onload = function() {
             // --> on utilise les données saisie du formulaire d'inscription pour setup les propriétés de notre nouvelle 'User'
             // puis on stocke ce nouvelle objet utilisateurs dans le 'localStorage' sous la clé 'user'
             
-            class User{
-
-
-                constructor(username, email, password){
-                    this.username = username;
-                    this.email = email;
-                    this.password = password;
-                } 
-                getUsername(){return this.username};
-                getEmail(){return this.email};
-                getPassword(){return this.password};
-            } 
-             const user = new User(inputValue[i].username, inputValue[i].email, inputValue[i].password);
-                  console.log('hello' + user.getUsername);
+           
+           
 
                 
                 
