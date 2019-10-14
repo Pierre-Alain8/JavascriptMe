@@ -70,13 +70,13 @@ window.onload = function() {
         
            for (let i = 0; i < articles.length; i++) {
                 let article = new Articles(articles[i].id, articles[i].title, articles[i].author, articles[i].publishedDate, 
-                articles[i].img, articles[i].content, articles[i].resume, articles[i].tags);
+                articles[i].img, articles[i].content, articles[i].resumes, articles[i].tags);
               
 
 
               
               let articlebloc = document.createElement("article");
-              section.appendChild(articlebloc);
+              
               
               articlebloc.classList.add('articles-prewiews');
               articlebloc.setAttribute('data-id', article.getId() );
@@ -84,6 +84,7 @@ window.onload = function() {
 
               let articleTitle = document.createElement('h2');
               articlebloc.appendChild(articleTitle);
+              articleTitle.innerText = article.getTitle();
 
               let articleBody = document.createElement("div");
               articleBody.classList.add('article-preview-body');
@@ -92,20 +93,25 @@ window.onload = function() {
               let contenairImg = document.createElement("div");
               contenairImg.classList.add('articles-prewiews-img');
               articleBody.appendChild(contenairImg);
+              
                  let imgPreview = document.createElement("img");
-                  //  imgPreview.innerHTML = "<img src= https://static.education.francetv.fr/media/img/hd/img.gif >";
+                 imgPreview.innerHTML = "<img https://static.education.francetv.fr/media/img/hd/img.gif >";
                  imgPreview.setAttribute('data-img', article.getImg())
                  contenairImg.appendChild(imgPreview);
+                 
+                 
 
 
 
               let articleDate = document.createElement("span");
               articleDate.setAttribute('data-publishedDate', article.getPublishedDate());
               articleBody.appendChild(articleDate);
+              articleDate.innerText = article.getPublishedDate();
 
               let articleAuthor = document.createElement ("span");
               articleAuthor.setAttribute('data-author', article.getAuthor());
               articleBody.appendChild(articleAuthor);
+              articleAuthor.innerText = article.getAuthor();
 
 
 
@@ -113,7 +119,8 @@ window.onload = function() {
               articleResume.classList.add ('article-prewiew-resume');
               articleBody.appendChild(articleResume);
                  let pResume = document.createElement("p");
-                 pResume.setAttribute('date-resume', article.getResume);
+                 pResume.innerText = article.getResume();
+                 pResume.setAttribute('date-resume', article.getResume());
                  articleResume.appendChild(pResume)
 
                 
@@ -123,6 +130,7 @@ window.onload = function() {
               articleContent.classList.add('article-preview-content');
               articleBody.appendChild(articleContent);
                   let pContent = document.createElement("p");
+                  pContent.innerText = article.getContent();
                   pContent.setAttribute('data-content', article.getContent())
                   articleContent.appendChild(pContent);
 
@@ -131,8 +139,10 @@ window.onload = function() {
               articleTags.classList.add('article-preview-tags');
               articleBody.appendChild(articleTags);
                  let tagsPreviews = document.createElement("span")
+                 tagsPreviews.innerText = article.getTags();
                  tagsPreviews.setAttribute('data-tags', article.getTags());
                  articleTags.appendChild(tagsPreviews);
+                 section.appendChild(articlebloc);
 
                   //  articles.innerHTML = articlebloc;
 
