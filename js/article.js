@@ -1,4 +1,6 @@
 window.onload = function() {
+    readFile('https://raw.githubusercontent.com/promo3Saint-Maur/files/master/articles.json', function(articles) { 
+        console.log(articles);
 
     // VOUS Y ETES PRESQUE !!!
 
@@ -15,5 +17,5 @@ window.onload = function() {
         // Il serait donc peut-etre jusdicieux d'organiser notre code en utilisant des fonctions dynamique réutilisable ;-)
 
 
-
+    });
 }
