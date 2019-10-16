@@ -173,10 +173,10 @@ window.onload = function() {
               //   articlebloc.appendChild(articleBody);
 
 
-              pResume.addEventListener("click", function() {
-                 if(pResume.getAttribute("data-resumes") == articles[i].resumes) {
-                   document.location.href="article.html" + article.id;
-                 };
+              articlebloc.addEventListener("click", function() {
+   
+                   document.location.href="article.html?id=" + article.getId();
+               
               });
                
 
